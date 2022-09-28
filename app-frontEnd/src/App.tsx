@@ -1,12 +1,13 @@
 import React, { createContext, useState } from "react";
+import { Router, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import Routess from "./routes";
 
 
 function App() {
   return (
-
-    <div>
-      <h1>Olá Mundo</h1>
-    </div>
+      <BrowserRouter>
+          <Routess/>
+      </BrowserRouter>
   );
 }
 
