@@ -1,13 +1,21 @@
 import '../../styles/forms.css';
 import {Link} from 'react-router-dom'
 
-const Login = () => {
+const Cadastro = () => {
     return (
         <div className="add-edit">
             <form
                 className="add-edit__form"
             >
-                <h1>Login</h1>
+                <h1>Cadastro</h1>
+                <label htmlFor="nome" color='#fff'>Nome:</label>
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Seu Nome..."
+                />
+
                 <label className='label' htmlFor="email">Email:</label>
                 <input
                     type="email"
@@ -27,8 +35,8 @@ const Login = () => {
                 <input type="submit" />
                 <div className='div-cad'>
                     <p>
-                        Ainda não tem uma conta?
-                        <Link to="/cadastro"> Cadastre-se</Link>
+                        Já tem uma conta?
+                        <Link to="/login"> Fazer Login</Link>
                     </p>
                 </div>
             </form>
@@ -36,4 +44,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Cadastro
