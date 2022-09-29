@@ -17,8 +17,8 @@ const Routess: any = () => {
     const setAuthLS = (newAuth: any)=>{
         setAuth(newAuth);
         localStorage.setItem("token", newAuth.token);
+        console.log(localStorage.getItem("token"));
     }
-    const navigate = useNavigate();
     return (
         <AuthContext.Provider value={{ token: auth, setAuth: setAuthLS }}>
             <Routes>
