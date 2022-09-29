@@ -1,34 +1,39 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import '../../styles/forms.css';
-import { AuthContext } from "../../routes"
-import { CadastroUser} from "../../service/User"
+import '../../../styles/forms.css';
+import { AuthContext } from "../../../routes"
+import {LoginUser} from "../../../service/User"
 
-const Cadastro = () => {
-    const [user, setUser] = useState({
-        name: '',
+
+
+const Login = () => {
+
+    const [login, setLogin] = useState({
         email: '',
         password: ''
     })
 
-    function updatedUser(e) {
-        setUser({
-            ...user,
+    function updatedLogin(e) {
+        setLogin({
+            ...login,
             [e.target.name]: e.target.value
         })
     }
 
+
+
+    const auth = useContext(AuthContext);
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        CadastroUser(user).then((response) => {
-            alert("Cadastrado com sucesso!");
-            navigate("/login");
+        LoginUser(login).then((response) => {
+            auth.setAuth({ token: response.data.token});
+            navigate('/');
         }).catch((error) => {
-            alert("Usuário não cadastrado");
+            alert("Usário ou senha incorreta");
         })
     };
 
@@ -38,25 +43,15 @@ const Cadastro = () => {
                 className="add-edit__form bg-dark"
                 onSubmit={(e) => {handleSubmit(e)}}
             >
-                <h1>Cadastro</h1>
-                <label htmlFor="name" color='#fff'>Nome:</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Seu Nome..."
-                    value={user.name}
-                    onChange={(e) => updatedUser(e)}
-                />
-
+                <h1>Login</h1>
                 <label className='label' htmlFor="email">Email:</label>
                 <input
                     type="email"
                     id="email"
                     name="email"
                     placeholder="Seu Email..."
-                    value={user.email}
-                    onChange={(e) => updatedUser(e)}
+                    value={login.email}
+                    onChange={(e) => { updatedLogin(e) }}
                 />
 
                 <label htmlFor="password">Senha:</label>
@@ -65,15 +60,15 @@ const Cadastro = () => {
                     id="password"
                     name="password"
                     placeholder="Sua senha..."
-                    value={user.password}
-                    onChange={(e) => updatedUser(e)}
+                    value={login.password}
+                    onChange={(e) => { updatedLogin(e) }}
                 />
 
                 <input type="submit" />
                 <div className='div-cad'>
                     <p>
-                        Já tem uma conta?
-                        <Link to="/login"> Fazer Login</Link>
+                        Ainda não tem uma conta?
+                        <Link to="/cadastro"> Cadastre-se</Link>
                     </p>
                 </div>
             </form>
@@ -81,4 +76,4 @@ const Cadastro = () => {
     )
 }
 
-export default Cadastro
+export default Login

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../routes';
 import Header from "../../components/Header"
 import './styles.css'
-import { Listar } from "../../service/Notes";
+import { Listar } from "../../service/Notas";
 
 
 const Home = () => {
