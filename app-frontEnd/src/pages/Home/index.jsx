@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../routes';
 import Header from "../../components/Header"
 import './styles.css'
-import { Listar } from "../../service/Notas";
+import { Listar, DeleteNotas } from "../../service/Notas";
 
 
 const Home = () => {
@@ -29,7 +29,18 @@ const Home = () => {
         )
     }
 
-    const onDelete = (id) => { };
+    const onDelete = (id) => {
+        DeleteNotas(context.token.token, id).then(
+            (response) => {
+                carregarNotas()
+                alert("Nota Deletada");
+            }
+        ).catch(
+            (error => {
+                console.log(error);
+            })
+        )
+    };
 
     return (
         <div>

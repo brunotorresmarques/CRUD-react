@@ -53,8 +53,13 @@ const CadastroEdit = () => {
         if (id == null) {
             Cria(context.token.token, nota).then(
                 (response) => {
-                    console.log("Cadastrado")
-                    console.log(response.data)
+                    setNota(
+                        {
+                            title: '',
+                            content: '',
+                            description: ''
+                        }
+                    )
                     alert("Nota Criada");
                 }
             ).catch(
@@ -81,9 +86,11 @@ const CadastroEdit = () => {
             <div className="add-edit">
                 <form
                     className="add-edit__form bg-dark"
-                    onSubmit={(e) => {handleSubmit(e)}}
+                    onSubmit={(e) => { handleSubmit(e) }}
                 >
-                    <h1>Cadastrar Nota</h1>
+                    {
+                        id == null ? <h1>Cadastrar Nota</h1>: <h1>Editar Nota</h1>
+                    }
                     <label htmlFor="title" color='#fff'>Título:</label>
                     <input
                         type="text"

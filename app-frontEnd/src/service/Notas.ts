@@ -43,3 +43,15 @@ export function AtualizaNota(token: any, id: any, nota: any){
         data:nota
     })
 }
+
+export function DeleteNotas(token: any, id: any){
+    return(
+        axios({
+            method: "DELETE",
+            url: `https://test-flimed-backend.herokuapp.com/notes/delete/${id}`,
+            headers: {
+                'Authorization': `Bearer ${token}` 
+            }
+        })
+    );
+}
