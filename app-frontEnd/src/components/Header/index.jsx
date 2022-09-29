@@ -11,7 +11,7 @@ const Header = () => {
 
     const logout = (e) => {
         e.preventDefault()
-        auth.setAuth({ token: null});
+        localStorage.removeItem("token");
         navigate('/login');
     }
 

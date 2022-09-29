@@ -1,12 +1,35 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../routes';
 import Header from "../../components/Header"
 import './styles.css'
+import { Listar } from "../../service/Notes";
+
 
 const Home = () => {
     const [notas, setNotas] = useState([])
+    const context = useContext(AuthContext)
 
-    const onDelete = (id) => {};
+
+    useEffect(() => {
+        carregarNotas()
+    }, [])
+
+    function carregarNotas() {
+        Listar(context.token.token).then(
+            (response) => {
+                if (response.data != null) {
+                    setNotas(response.data.notes)
+                }
+            }
+        ).catch(
+            (error => {
+                console.log(error);
+            })
+        )
+    }
+
+    const onDelete = (id) => { };
 
     return (
         <div>
@@ -30,16 +53,16 @@ const Home = () => {
                                     <td>{nota.content}</td>
                                     <td>
                                         <Link to={`/update/${nota.id}`}>
-                                            <button className="btn btn-edit">Edit</button>
+                                            <button className="btn-b btn-edit">Edit</button>
                                         </Link>
                                         <button
-                                            className="btn btn-delete"
+                                            className="btn-b btn-delete"
                                             onClick={() => onDelete(nota.id)}
                                         >
                                             Delete
                                         </button>
                                         <Link to={`/view/${nota.id}`}>
-                                            <button className="btn btn-view">View</button>
+                                            <button className="btn-b btn-view">View</button>
                                         </Link>
                                     </td>
                                 </tr>
