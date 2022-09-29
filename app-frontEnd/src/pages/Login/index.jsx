@@ -33,7 +33,7 @@ const Login = () => {
             auth.setAuth({ token: response.data.token});
             navigate('/');
         }).catch((error) => {
-            alert("Usario ou senha incorreta");
+            alert("Usário ou senha incorreta");
         })
     };
 
