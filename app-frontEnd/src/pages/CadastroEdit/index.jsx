@@ -1,26 +1,78 @@
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import '../../styles/forms.css';
 import { AuthContext } from "../../routes"
 import Header from "../../components/Header";
+import { Get, Cria, AtualizaNota } from '../../service/Notas'
 
-const CadastroNotas = () => {
-    const [nota, setUser] = useState({
+const CadastroEdit = () => {
+    const [nota, setNota] = useState({
         title: '',
         content: '',
         description: ''
     })
+    const context = useContext(AuthContext)
+    const { id } = useParams();
+
+
 
     function updatedNota(e) {
-        setUser({
+        setNota({
             ...nota,
             [e.target.name]: e.target.value
         })
     }
 
+
+    useEffect(() => {
+        if (id != null) {
+            Get(context.token.token, id).then(
+                (response) => {
+                    if (response.data.note != null) {
+                        console.log(response.data.note)
+                        setNota({
+                            ...nota,
+                            title: response.data.note.title,
+                            content: response.data.note.content,
+                            description: response.data.note.description
+                        })
+                    }
+
+                }
+            ).catch(
+                (error => {
+                    console.log(error);
+                })
+            )
+        }
+    }, [id])
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(nota)
+
+        if (id == null) {
+            Cria(context.token.token, nota).then(
+                (response) => {
+                    console.log("Cadastrado")
+                    console.log(response.data)
+                    alert("Nota Criada");
+                }
+            ).catch(
+                (error => {
+                    console.log(error);
+                })
+            )
+        } else {
+            AtualizaNota(context.token.token, id, nota).then(
+                (response) => {
+                    alert("Nota Editada");
+                }
+            ).catch(
+                (error => {
+                    console.log(error);
+                })
+            )
+        }
     };
 
     return (
@@ -29,7 +81,7 @@ const CadastroNotas = () => {
             <div className="add-edit">
                 <form
                     className="add-edit__form bg-dark"
-                    onSubmit={(e) => { handleSubmit(e) }}
+                    onSubmit={(e) => {handleSubmit(e)}}
                 >
                     <h1>Cadastrar Nota</h1>
                     <label htmlFor="title" color='#fff'>Título:</label>
@@ -69,4 +121,4 @@ const CadastroNotas = () => {
     )
 }
 
-export default CadastroNotas
+export default CadastroEdit

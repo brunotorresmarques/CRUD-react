@@ -3,7 +3,7 @@ import { Navigate, Routes, Route }  from 'react-router-dom';
 import Cadastro from "./pages/Users/Cadastro";
 import Home from "./pages/Home";
 import Login from "./pages/Users/Login";
-import CadastroNotas from "./pages/CadastroNotas";
+import CadastroEdit from "./pages/CadastroEdit";
 
 
 export const AuthContext = createContext<IProviderAuth>({ token: null, setAuth: null});
@@ -34,7 +34,12 @@ const Routess: any = () => {
                     path="/cadastrar-nota"
                     element={auth.token == null ? 
                     <Navigate to='/login' replace /> :
-                    <CadastroNotas/>} />
+                    <CadastroEdit/>} />
+                <Route
+                    path="/edit/:id"
+                    element={auth.token == null ? 
+                    <Navigate to='/login' replace /> :
+                    <CadastroEdit/>} />
             </Routes>
         </AuthContext.Provider>
     );

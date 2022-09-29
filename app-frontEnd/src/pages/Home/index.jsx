@@ -40,7 +40,6 @@ const Home = () => {
                         <tr>
                             <th>Titulo</th>
                             <th>Descrição</th>
-                            <th>Conteúdo</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -50,9 +49,8 @@ const Home = () => {
                                 <tr key={nota.id}>
                                     <td>{nota.title}</td>
                                     <td>{nota.description}</td>
-                                    <td>{nota.content}</td>
                                     <td>
-                                        <Link to={`/update/${nota.id}`}>
+                                        <Link to={`/edit/${nota.id}`}>
                                             <button className="btn-b btn-edit">Edit</button>
                                         </Link>
                                         <button
