@@ -19,9 +19,6 @@ const Cadastro = () => {
     }
 
 
-
-    const auth = useContext(AuthContext);
-
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
