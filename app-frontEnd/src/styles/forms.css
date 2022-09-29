@@ -1,5 +1,6 @@
 input[type="text"],
 input[type="email"],
+input[type="password"],
 select {
   width: 100%;
   padding: 12px 20px;
@@ -26,7 +27,7 @@ p {
 }
 
 a {
-  margin-left: auto;
+  margin-left: 10px;
   color: rgb(8, 156, 255);
 }
 

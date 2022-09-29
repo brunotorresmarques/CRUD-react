@@ -13,10 +13,9 @@ interface IProviderAuth {
   }
 
 const Routess: any = () => {
-    const [auth, setAuth] = useState({ token: localStorage.getItem("token"), nome: localStorage.getItem("nome")});
+    const [auth, setAuth] = useState({ token: localStorage.getItem("token")});
     const setAuthLS = (newAuth: any)=>{
         setAuth(newAuth);
-        console.log(newAuth)
         localStorage.setItem("token", newAuth.token);
     }
     const navigate = useNavigate();
