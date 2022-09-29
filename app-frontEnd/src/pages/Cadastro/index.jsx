@@ -38,7 +38,7 @@ const Cadastro = () => {
     return (
         <div className="add-edit">
             <form
-                className="add-edit__form"
+                className="add-edit__form bg-dark"
                 onSubmit={(e) => {handleSubmit(e)}}
             >
                 <h1>Cadastro</h1>
