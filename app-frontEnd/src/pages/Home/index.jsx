@@ -62,16 +62,16 @@ const Home = () => {
                                     <td>{nota.description}</td>
                                     <td>
                                         <Link to={`/edit/${nota.id}`}>
-                                            <button className="btn-b btn-edit">Edit</button>
+                                            <button className="btn-b btn-edit">Editar</button>
                                         </Link>
                                         <button
                                             className="btn-b btn-delete"
                                             onClick={() => onDelete(nota.id)}
                                         >
-                                            Delete
+                                            Deletar
                                         </button>
                                         <Link to={`/view/${nota.id}`}>
-                                            <button className="btn-b btn-view">View</button>
+                                            <button className="btn-b btn-view">Ver</button>
                                         </Link>
                                     </td>
                                 </tr>

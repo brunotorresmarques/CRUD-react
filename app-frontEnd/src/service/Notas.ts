@@ -55,3 +55,13 @@ export function DeleteNotas(token: any, id: any){
         })
     );
 }
+
+export function GetNota(token: any, id: any){
+    return axios({
+        method:"GET",
+        url:`https://test-flimed-backend.herokuapp.com/notes/show/${id}`,
+        headers: {
+            'Authorization': `Bearer ${token}` 
+        }
+    })
+}

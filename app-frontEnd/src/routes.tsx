@@ -4,6 +4,7 @@ import Cadastro from "./pages/Users/Cadastro";
 import Home from "./pages/Home";
 import Login from "./pages/Users/Login";
 import CadastroEdit from "./pages/CadastroEdit";
+import View from "./pages/View";
 
 
 export const AuthContext = createContext<IProviderAuth>({ token: null, setAuth: null});
@@ -40,6 +41,11 @@ const Routess: any = () => {
                     element={auth.token == null ? 
                     <Navigate to='/login' replace /> :
                     <CadastroEdit/>} />
+                <Route
+                    path="/view/:id"
+                    element={auth.token == null ? 
+                    <Navigate to='/login' replace /> :
+                    <View/>} />
             </Routes>
         </AuthContext.Provider>
     );
