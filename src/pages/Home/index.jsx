@@ -56,29 +56,30 @@ const Home = () => {
                     </thead>
                     <tbody>
                         {
-                        notas.length > 0 ?
-                        notas.map((nota, index) => {
-                            return (
-                                <tr key={nota.id}>
-                                    <td>{nota.title}</td>
-                                    <td>{nota.description}</td>
-                                    <td>
-                                        <Link to={`/edit/${nota.id}`}>
-                                            <button className="btn-b btn-edit">Editar</button>
-                                        </Link>
-                                        <button
-                                            className="btn-b btn-delete"
-                                            onClick={() => onDelete(nota.id)}
-                                        >
-                                            Deletar
-                                        </button>
-                                        <Link to={`/view/${nota.id}`}>
-                                            <button className="btn-b btn-view">Ver</button>
-                                        </Link>
-                                    </td>
-                                </tr>
-                            );
-                        })} : <tr>Não há notas cadastradas</tr>
+                            notas.length < 0 ?
+                                notas.map((nota, index) => {
+                                    return (
+                                        <tr key={nota.id}>
+                                            <td>{nota.title}</td>
+                                            <td>{nota.description}</td>
+                                            <td>
+                                                <Link to={`/edit/${nota.id}`}>
+                                                    <button className="btn-b btn-edit">Editar</button>
+                                                </Link>
+                                                <button
+                                                    className="btn-b btn-delete"
+                                                    onClick={() => onDelete(nota.id)}
+                                                >
+                                                    Deletar
+                                                </button>
+                                                <Link to={`/view/${nota.id}`}>
+                                                    <button className="btn-b btn-view">Ver</button>
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    );
+                                }) : <tr>Não há notas cadastradas</tr>
+                        }
                     </tbody>
                 </table>
             </div>
