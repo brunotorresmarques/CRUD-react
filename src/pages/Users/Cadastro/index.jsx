@@ -69,7 +69,7 @@ const Cadastro = () => {
                     onChange={(e) => updatedUser(e)}
                 />
 
-                <input type="submit" />
+                <input type="submit" value={"Enviar"}/>
                 <div className='div-cad'>
                     <p>
                         Já tem uma conta?

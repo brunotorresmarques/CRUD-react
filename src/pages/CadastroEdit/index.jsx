@@ -122,7 +122,7 @@ const CadastroEdit = () => {
                         onChange={(e) => updatedNota(e)}
                     />
 
-                    <input type="submit" value={"Cad"} />
+                    <input type="submit" value={"Enviar"} />
                 </form>
             </div>
         </div>
