@@ -55,7 +55,9 @@ const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {notas.map((nota, index) => {
+                        {
+                        notas.length > 0 ?
+                        notas.map((nota, index) => {
                             return (
                                 <tr key={nota.id}>
                                     <td>{nota.title}</td>
@@ -76,7 +78,7 @@ const Home = () => {
                                     </td>
                                 </tr>
                             );
-                        })}
+                        })} : <tr>Não há notas cadastradas</tr>
                     </tbody>
                 </table>
             </div>
