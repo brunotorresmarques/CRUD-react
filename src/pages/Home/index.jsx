@@ -56,7 +56,7 @@ const Home = () => {
                     </thead>
                     <tbody>
                         {
-                            notas.length < 0 ?
+                            notas.length > 0 ?
                                 notas.map((nota, index) => {
                                     return (
                                         <tr key={nota.id}>
