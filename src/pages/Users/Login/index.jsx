@@ -64,7 +64,7 @@ const Login = () => {
                     onChange={(e) => { updatedLogin(e) }}
                 />
 
-                <input type="submit" />
+                <input type="submit" value={"Enviar"}/>
                 <div className='div-cad'>
                     <p>
                         Ainda não tem uma conta?

@@ -86,6 +86,7 @@ const CadastroEdit = () => {
             <div className="add-edit">
                 <form
                     className="add-edit__form bg-dark"
+                    name="Enviar"
                     onSubmit={(e) => { handleSubmit(e) }}
                 >
                     {
@@ -121,7 +122,7 @@ const CadastroEdit = () => {
                         onChange={(e) => updatedNota(e)}
                     />
 
-                    <input type="submit" />
+                    <input type="submit" value={"Cad"} />
                 </form>
             </div>
         </div>
